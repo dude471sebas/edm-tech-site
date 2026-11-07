@@ -167,12 +167,12 @@ const styles = `
   }
   .eyebrow { color: #d49b70; letter-spacing: 3px; font-size: 12px; font-weight: bold; }
   h1 {
-    max-width: 850px;
-    font-size: clamp(40px, 6vw, 76px);
-    line-height: 1.09;
-    letter-spacing: -2px;
-    margin: 24px 0;
-  }
+  max-width: 850px;
+  font-size: clamp(36px, 4.5vw, 62px);
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+  margin: 24px 0;
+}
   .intro { max-width: 680px; font-size: 19px; line-height: 1.7; color: #c2c7c9; }
   .buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
   .button {
