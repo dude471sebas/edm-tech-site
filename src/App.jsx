@@ -13,10 +13,13 @@ const content = {
     expertiseIntro: "Trois procédés complémentaires pour répondre à vos besoins de fabrication spécialisés.",
     services: [
       {
-        name: "Électroérosion à fil",
-        description: "Profils complexes, fentes étroites et géométries difficiles à réaliser par usinage conventionnel.",
-        machine: "Charmilles Robofil 240SL"
-      },
+  name: "Électroérosion à fil",
+  description: "Découpe de profils complexes, de fentes étroites et de géométries difficiles à réaliser par usinage conventionnel.",
+  machine: "Charmilles Robofil 240SL",
+  image: "/images/ChatGPT%20Image%20Nov%207%2C%202026%2C%2005_19_51%20PM.jpg",
+  projectTitle: "Ressort de précision à géométrie complexe",
+  projectDescription: "Ressort mécanique à profil mince fabriqué par électroérosion à fil, combinant flexibilité élastique contrôlée et géométrie complexe."
+},
       {
         name: "Tournage CNC",
         description: "Composants cylindriques de précision, prototypes et petites séries avec possibilités d’usinage à outils motorisés.",
@@ -55,10 +58,13 @@ const content = {
     expertiseIntro: "Three complementary processes for specialized manufacturing requirements.",
     services: [
       {
-        name: "Wire EDM",
-        description: "Complex profiles, narrow slots and geometries that are difficult to produce with conventional machining.",
-        machine: "Charmilles Robofil 240SL"
-      },
+  name: "Wire EDM",
+  description: "Complex profiles, narrow slots and geometries that are difficult to produce with conventional machining.",
+  machine: "Charmilles Robofil 240SL",
+  image: "/images/ChatGPT%20Image%20Nov%207%2C%202026%2C%2005_19_51%20PM.jpg",
+  projectTitle: "Complex-Geometry Precision Spring",
+  projectDescription: "Thin-profile mechanical spring manufactured by wire EDM, featuring controlled elastic flexibility and intricate geometry."
+},
       {
         name: "CNC turning",
         description: "Precision cylindrical components, prototypes and small batches, including live-tool machining capabilities.",
@@ -193,6 +199,37 @@ const styles = `
   .lead { color: #b6bdc0; line-height: 1.7; max-width: 730px; }
   .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 38px; }
   .card { padding: 30px; background: #22282c; border: 1px solid #3b4347; border-radius: 6px; }
+  
+.capability-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #49423b;
+}
+
+.capability-project {
+  margin: 20px 0;
+  padding-top: 16px;
+  border-top: 1px solid #49423b;
+}
+
+.capability-project h4 {
+  color: #c58a5e;
+  font-size: 15px;
+  margin: 0 0 10px;
+}
+
+.capability-project p {
+  color: #b6bdc0;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: auto;
+  margin: 0;
+}
   .accent { width: 40px; height: 3px; background: #c58a5e; margin-bottom: 28px; }
   .card h3 { font-size: 22px; }
   .card p { font-size: 14px; color: #b6bdc0; line-height: 1.7; min-height: 100px; }
@@ -316,18 +353,36 @@ export default function App() {
             <h2>{t.expertise}</h2>
             <p className="lead">{t.expertiseIntro}</p>
 
-            <div className="cards">
-              {t.services.map((service) => (
-                <article className="card" key={service.machine}>
-                  <div className="accent"></div>
-                  <h3>{service.name}</h3>
-                  <p>{service.description}</p>
-                  <span className="machine">{service.machine}</span>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+           
+<div className="cards">
+  {t.services.map((service) => (
+    <article className="card" key={service.machine}>
+      {service.image && (
+        <img
+          className="capability-image"
+          src={service.image}
+          alt={service.projectTitle || service.name}
+        />
+      )}
+
+      <div className="accent"></div>
+      <h3>{service.name}</h3>
+      <p>{service.description}</p>
+
+      {service.projectTitle && (
+        <div className="capability-project">
+          <h4>{service.projectTitle}</h4>
+          <p>{service.projectDescription}</p>
+        </div>
+      )}
+
+      <span className="machine">{service.machine}</span>
+    </article>
+  ))}
+</div>
+</div>
+</section>
+
 
         <section className="muted" id="applications">
           <div className="container">
