@@ -135,7 +135,33 @@ const styles = `
     cursor: pointer;
   }
   .language button.active { background: #c58a5e; color: #15191c; font-weight: bold; }
-  .hero {
+  
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 48px;
+}
+.hero-image {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid #49423b;
+  box-shadow: 0 25px 65px #0008;
+}
+.hero-caption {
+  margin-top: 12px;
+  color: #c58a5e;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+@media (max-width: 800px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+}
+.hero {
     padding: 115px 0 125px;
     background: radial-gradient(ellipse at 80% 40%, #39312b, #202528 48%, #15191c 85%);
   }
@@ -244,22 +270,43 @@ export default function App() {
       </header>
 
       <main>
-        <section className="hero" id="home">
-          <div className="container">
-            <div className="eyebrow">{t.eyebrow}</div>
-            <h1>{t.title}</h1>
-            <p className="intro">{t.intro}</p>
+        
+<section className="hero" id="home">
+  <div className="container hero-layout">
+    <div>
+      <div className="eyebrow">{t.eyebrow}</div>
+      <h1>{t.title}</h1>
+      <p className="intro">{t.intro}</p>
 
-            <div className="buttons">
-              <a className="button primary" href="#contact">
-                {t.contactButton}
-              </a>
-              <a className="button secondary" href="#expertise">
-                {t.exploreButton}
-              </a>
-            </div>
-          </div>
-        </section>
+      <div className="buttons">
+        <a className="button primary" href="#contact">
+          {t.contactButton}
+        </a>
+        <a className="button secondary" href="#expertise">
+          {t.exploreButton}
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <img
+        className="hero-image"
+        src="/images/ChatGPT%20Image%20Nov%207%2C%202026%2C%2005_20_17%20PM.jpg"
+        alt={
+          lang === "fr"
+            ? "Capteur de pression et d'humidité conçu et fabriqué sur mesure"
+            : "Custom-engineered pressure and humidity sensor"
+        }
+      />
+      <div className="hero-caption">
+        {lang === "fr"
+          ? "CONCEPTION ET FABRICATION SUR MESURE"
+          : "CUSTOM ENGINEERING & MANUFACTURING"}
+      </div>
+    </div>
+  </div>
+</section>
+
 
         <section id="expertise">
           <div className="container">
