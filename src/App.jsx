@@ -145,6 +145,9 @@ const styles = `
 .hero-image {
   width: 100%;
   display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 45%;
   border-radius: 8px;
   border: 1px solid #49423b;
   box-shadow: 0 25px 65px #0008;
